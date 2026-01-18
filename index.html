@@ -245,6 +245,141 @@
             color: white;
         }
         
+        /* Modal styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: #f5ebe0;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #6b4423;
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            color: #4a3728;
+        }
+        
+        .modal-body {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .modal-cover {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 25px;
+        }
+        
+        .modal-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: #4a3728;
+            margin-bottom: 5px;
+        }
+        
+        .modal-author {
+            font-style: italic;
+            color: #8b7355;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .modal-details {
+            text-align: left;
+            line-height: 1.8;
+            color: #5a4a3a;
+        }
+        
+        .modal-details p {
+            margin-bottom: 15px;
+        }
+        
+        .modal-details strong {
+            color: #4a3728;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .modal-btn {
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .modal-btn-primary {
+            background: #6b4423;
+            color: white;
+        }
+        
+        .modal-btn-primary:hover {
+            background: #4a3728;
+        }
+        
+        .modal-btn-secondary {
+            background: transparent;
+            color: #6b4423;
+            border: 2px solid #d4a574;
+        }
+        
+        .modal-btn-secondary:hover {
+            background: #d4a574;
+            color: white;
+        }
+        
+        .book-info h3:hover {
+            color: #6b4423;
+        }
+        
+        .book-cover:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        
         footer {
             text-align: center;
             padding: 50px 20px;
@@ -306,9 +441,9 @@
                 <div class="month">Feb</div>
                 <div class="day">19</div>
             </div>
-            <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="book-cover">
+            <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="book-cover" onclick="openModal('camera-girl')" style="cursor:pointer">
             <div class="book-info">
-                <h3>Camera Girl</h3>
+                <h3 onclick="openModal('camera-girl')" style="cursor:pointer">Camera Girl</h3>
                 <p class="author">by Carl S. Anthony</p>
                 <p class="description">Biography of early Jacqueline Kennedy — discover the fascinating woman before she became First Lady.</p>
             </div>
@@ -321,9 +456,9 @@
                 <div class="month">Mar</div>
                 <div class="day">19</div>
             </div>
-            <img src="covers/emma.jpg" alt="Emma cover" class="book-cover">
+            <img src="covers/emma.jpg" alt="Emma cover" class="book-cover" onclick="openModal('emma')" style="cursor:pointer">
             <div class="book-info">
-                <h3>Emma</h3>
+                <h3 onclick="openModal('emma')" style="cursor:pointer">Emma</h3>
                 <p class="author">by Jane Austen</p>
                 <p class="description">Celebrating 250 years of Austen! A witty tale of a young matchmaker who learns love isn't so easily arranged.</p>
             </div>
@@ -336,9 +471,9 @@
                 <div class="month">Apr</div>
                 <div class="day">16</div>
             </div>
-            <img src="covers/unfinished-love-story.jpg" alt="An Unfinished Love Story cover" class="book-cover">
+            <img src="covers/unfinished-love-story.jpg" alt="An Unfinished Love Story cover" class="book-cover" onclick="openModal('unfinished-love-story')" style="cursor:pointer">
             <div class="book-info">
-                <h3>An Unfinished Love Story</h3>
+                <h3 onclick="openModal('unfinished-love-story')" style="cursor:pointer">An Unfinished Love Story</h3>
                 <p class="author">by Doris Kearns Goodwin</p>
                 <p class="description">A touching history of her marriage, written after her husband's passing — love, memory, and American history intertwined.</p>
             </div>
@@ -351,9 +486,9 @@
                 <div class="month">May</div>
                 <div class="day">21</div>
             </div>
-            <img src="covers/rose-code.jpg" alt="The Rose Code cover" class="book-cover">
+            <img src="covers/rose-code.jpg" alt="The Rose Code cover" class="book-cover" onclick="openModal('rose-code')" style="cursor:pointer">
             <div class="book-info">
-                <h3>The Rose Code</h3>
+                <h3 onclick="openModal('rose-code')" style="cursor:pointer">The Rose Code</h3>
                 <p class="author">by Kate Quinn</p>
                 <p class="description">A gripping fictional account of female code breakers in WWII England — secrets, friendship, and wartime courage.</p>
             </div>
@@ -366,9 +501,9 @@
                 <div class="month">Jun</div>
                 <div class="day">18</div>
             </div>
-            <img src="covers/offing.jpg" alt="The Offing cover" class="book-cover">
+            <img src="covers/offing.jpg" alt="The Offing cover" class="book-cover" onclick="openModal('offing')" style="cursor:pointer">
             <div class="book-info">
-                <h3>The Offing</h3>
+                <h3 onclick="openModal('offing')" style="cursor:pointer">The Offing</h3>
                 <p class="author">by Benjamin Myers</p>
                 <p class="description">A lyrical coming-of-age tale set in post-WWII England — an unlikely friendship, poetry, and the beauty of the Yorkshire coast.</p>
             </div>
@@ -380,5 +515,112 @@
     <footer>
         <p>See you at Aqus! ☕📚</p>
     </footer>
+<!-- Book Modal -->
+    <div class="modal-overlay" id="bookModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-body">
+                <img src="" alt="" class="modal-cover" id="modalCover">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-author" id="modalAuthor"></p>
+                <div class="modal-details" id="modalDetails"></div>
+                <div class="modal-buttons" id="modalButtons"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const bookData = {
+            'camera-girl': {
+                title: 'Camera Girl',
+                author: 'Carl S. Anthony',
+                cover: 'covers/camera-girl.jpg',
+                date: 'February 19, 2026',
+                pages: '400 pages',
+                genre: 'Biography',
+                description: 'Before she was Jacqueline Kennedy, First Lady and American icon, she was "Camera Girl"—a curious, ambitious young photographer working for a Washington newspaper. This captivating biography explores Jackie\'s formative years: her education, her early career behind the lens, her family dynamics, and the experiences that shaped the poised, cultured woman who would captivate the world. Carl S. Anthony draws on new research to reveal a Jackie we\'ve never seen before.',
+                availability: 'Available at the library',
+                amazon: 'https://www.amazon.com/s?k=Camera+Girl+Carl+Anthony'
+            },
+            'emma': {
+                title: 'Emma',
+                author: 'Jane Austen',
+                cover: 'covers/emma.jpg',
+                date: 'March 19, 2026',
+                pages: '474 pages',
+                genre: 'Classic Fiction',
+                description: 'In celebration of the 250th anniversary of Jane Austen\'s birth, we revisit this beloved classic. Emma Woodhouse, "handsome, clever, and rich," is a young woman who fancies herself a matchmaker. But her well-meaning meddling leads to misunderstandings, heartbreak, and ultimately self-discovery. Witty, romantic, and timelessly relevant, Emma remains one of Austen\'s most delightful heroines.',
+                availability: 'Free on reading apps (Kindle, Apple Books, Project Gutenberg)',
+                amazon: 'https://www.amazon.com/s?k=Emma+Jane+Austen'
+            },
+            'unfinished-love-story': {
+                title: 'An Unfinished Love Story',
+                author: 'Doris Kearns Goodwin',
+                cover: 'covers/unfinished-love-story.jpg',
+                date: 'April 16, 2026',
+                pages: '480 pages',
+                genre: 'Memoir / History',
+                description: 'Pulitzer Prize-winning historian Doris Kearns Goodwin delivers a deeply personal book—part memoir, part history, part love story. After her husband Dick Goodwin\'s death, she went through boxes he had kept sealed for decades, containing documents from his years working with JFK and LBJ. What emerges is an intimate portrait of their marriage, the tumultuous 1960s, and a meditation on love, loss, and legacy.',
+                availability: '22 copies available at the library',
+                amazon: 'https://www.amazon.com/s?k=An+Unfinished+Love+Story+Doris+Kearns+Goodwin'
+            },
+            'rose-code': {
+                title: 'The Rose Code',
+                author: 'Kate Quinn',
+                cover: 'covers/rose-code.jpg',
+                date: 'May 21, 2026',
+                pages: '655 pages',
+                genre: 'Historical Fiction',
+                description: 'Three women. One secret. A gripping novel set at Bletchley Park during World War II. Osla, Mab, and Beth come from vastly different backgrounds, but their lives intertwine at Britain\'s secret codebreaking facility. Years later, a mysterious encrypted letter surfaces, and the three former friends must reunite to decode it—and confront a traitor in their midst. A tale of friendship, betrayal, and courage.',
+                availability: 'Not yet available at library — purchase recommended',
+                amazon: 'https://www.amazon.com/s?k=The+Rose+Code+Kate+Quinn'
+            },
+            'offing': {
+                title: 'The Offing',
+                author: 'Benjamin Myers',
+                cover: 'covers/offing.jpg',
+                date: 'June 18, 2026',
+                pages: '288 pages',
+                genre: 'Literary Fiction',
+                description: 'Summer, 1946. Robert, a young man from a Durham mining village, takes a walking trip before starting a life down the pits. On the Yorkshire coast, he encounters Dulcie, an eccentric older woman living in a clifftop cottage. An unlikely friendship blossoms over food, poetry, and long conversations. Lyrical and luminous, The Offing is a celebration of nature, art, and the transformative power of unexpected connections.',
+                availability: 'Check library availability',
+                amazon: 'https://www.amazon.com/s?k=The+Offing+Benjamin+Myers'
+            }
+        };
+        
+        function openModal(bookId) {
+            const book = bookData[bookId];
+            if (!book) return;
+            
+            document.getElementById('modalCover').src = book.cover;
+            document.getElementById('modalCover').alt = book.title + ' cover';
+            document.getElementById('modalTitle').textContent = book.title;
+            document.getElementById('modalAuthor').textContent = 'by ' + book.author;
+            
+            document.getElementById('modalDetails').innerHTML = `
+                <p><strong>Discussion Date:</strong> ${book.date}</p>
+                <p><strong>Genre:</strong> ${book.genre} · ${book.pages}</p>
+                <p>${book.description}</p>
+                <p><strong>Availability:</strong> ${book.availability}</p>
+            `;
+            
+            document.getElementById('modalButtons').innerHTML = `
+                <a href="${book.amazon}" target="_blank" class="modal-btn modal-btn-primary">🛒 Buy on Amazon</a>
+            `;
+            
+            document.getElementById('bookModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('bookModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
 </body>
 </html>
