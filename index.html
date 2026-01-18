@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Lora:wght@400;500&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Lora:wght@400;500&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <title>Unique Women Book Club | Petaluma, CA | Meeting 3rd Thursday at Aqus Café</title>
     <meta name="description" content="Unique Women Book Club meets the third Thursday of every month at 2:30 PM at Aqus Café in Petaluma, California. View our 2026 reading list and join us!">
@@ -17,11 +17,63 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Crimson Text', Georgia, serif;
             background: #f5ebe0;
             color: #4a3728;
             min-height: 100vh;
+        }
+        
+        /* Subtle paper texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+        }
+        
+        /* Page load animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .hero header .coffee-cup {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .hero header h1 {
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+        
+        .hero header .tagline {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .meeting-info {
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
         
         .sticky-nav {
@@ -262,13 +314,15 @@
             grid-template-columns: auto 1fr auto auto;
             gap: 20px;
             align-items: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             border-left: 5px solid #d4a574;
             cursor: pointer;
         }
         
         .book-card:hover {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(107, 68, 35, 0.15);
+            border-left-color: #722f37;
         }
         
         .book-cover {
@@ -277,10 +331,33 @@
             object-fit: cover;
             border-radius: 5px;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
         }
         
-        .book-card:hover {
-            transform: translateX(5px);
+        .book-card:hover .book-cover {
+            transform: scale(1.05);
+        }
+        
+        /* Next book highlight */
+        .book-card.next-book {
+            background: linear-gradient(135deg, #fff 0%, #faf6f1 100%);
+            border-left: 5px solid #722f37;
+            position: relative;
+            box-shadow: 0 6px 25px rgba(114, 47, 55, 0.12);
+        }
+        
+        .book-card.next-book::before {
+            content: '📖 Next Read';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #722f37;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
         
         .book-date {
@@ -474,22 +551,48 @@
         
         footer {
             text-align: center;
-            padding: 50px 20px;
+            padding: 50px 20px 40px;
             background: #722f37;
             color: #d4a574;
             margin-top: 60px;
         }
         
-        footer p {
-            font-family: 'Caveat', cursive;
+        .footer-decoration {
             font-size: 1.5rem;
+            letter-spacing: 8px;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+        
+        footer > p {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+        }
+        
+        .footer-info {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: inline-block;
+        }
+        
+        .footer-info p {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+        
+        .footer-info .meeting-reminder {
+            opacity: 0.85;
+            font-size: 1rem;
         }
         
         footer .credit {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 1.1rem;
-            margin-top: 15px;
-            opacity: 0.9;
+            font-family: 'Crimson Text', serif;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            opacity: 0.8;
         }
         
         footer .credit a {
@@ -675,7 +778,7 @@
     <section class="books-section" id="books">
         <h2>📖 Our 2026 Reading List</h2>
         
-        <div class="book-card" onclick="openModal('camera-girl')">
+        <div class="book-card next-book" onclick="openModal('camera-girl')">
             <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="book-cover">
             <div class="book-info">
                 <div class="book-date">February 19</div>
@@ -737,7 +840,14 @@
     </section>
     
     <footer id="contact">
+        <div class="footer-decoration">
+            📖 ☕ 📚 ☕ 📖 ☕ 📚 ☕ 📖
+        </div>
         <p>See you at Aqus! ☕📚</p>
+        <div class="footer-info">
+            <p><strong>Questions?</strong> Reach out to Anne</p>
+            <p class="meeting-reminder">Third Thursday • 2:30 PM • Aqus Café</p>
+        </div>
         <p class="credit">Made with ❤️ by David & Anne Jones on <a href="https://exe.dev" target="_blank">exe.dev</a> with <a href="https://exe.dev/shelley" target="_blank">Shelley</a></p>
     </footer>
 <!-- Book Modal -->
