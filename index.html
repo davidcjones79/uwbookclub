@@ -161,7 +161,7 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             display: grid;
-            grid-template-columns: auto auto 1fr auto auto;
+            grid-template-columns: auto 1fr auto auto;
             gap: 20px;
             align-items: center;
             transition: transform 0.3s ease;
@@ -181,23 +181,14 @@
         }
         
         .book-date {
-            background: #6b4423;
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            min-width: 80px;
-        }
-        
-        .book-date .month {
             font-family: 'Caveat', cursive;
-            font-size: 1.3rem;
-        }
-        
-        .book-date .day {
-            font-size: 1.8rem;
-            font-weight: 600;
-            line-height: 1;
+            font-size: 1.1rem;
+            color: #6b4423;
+            background: #f5ebe0;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
         }
         
         .book-info h3 {
@@ -438,10 +429,6 @@
             
             .book-date {
                 justify-self: center;
-                padding: 12px 20px;
-                min-width: auto;
-                display: inline-flex;
-                flex-direction: column;
             }
             
             .book-cover {
@@ -550,12 +537,9 @@
         <h2>📖 Our 2026 Reading List</h2>
         
         <div class="book-card">
-            <div class="book-date">
-                <div class="month">Feb</div>
-                <div class="day">19</div>
-            </div>
             <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="book-cover" onclick="openModal('camera-girl')" style="cursor:pointer">
             <div class="book-info">
+                <div class="book-date">February 19</div>
                 <h3 onclick="openModal('camera-girl')" style="cursor:pointer">Camera Girl</h3>
                 <p class="author">by Carl S. Anthony</p>
                 <p class="description">Biography of early Jacqueline Kennedy — discover the fascinating woman before she became First Lady.</p>
@@ -565,12 +549,9 @@
         </div>
         
         <div class="book-card">
-            <div class="book-date">
-                <div class="month">Mar</div>
-                <div class="day">19</div>
-            </div>
             <img src="covers/emma.jpg" alt="Emma cover" class="book-cover" onclick="openModal('emma')" style="cursor:pointer">
             <div class="book-info">
+                <div class="book-date">March 19</div>
                 <h3 onclick="openModal('emma')" style="cursor:pointer">Emma</h3>
                 <p class="author">by Jane Austen</p>
                 <p class="description">Celebrating 250 years of Austen! A witty tale of a young matchmaker who learns love isn't so easily arranged.</p>
@@ -580,12 +561,9 @@
         </div>
         
         <div class="book-card">
-            <div class="book-date">
-                <div class="month">Apr</div>
-                <div class="day">16</div>
-            </div>
             <img src="covers/unfinished-love-story.jpg" alt="An Unfinished Love Story cover" class="book-cover" onclick="openModal('unfinished-love-story')" style="cursor:pointer">
             <div class="book-info">
+                <div class="book-date">April 16</div>
                 <h3 onclick="openModal('unfinished-love-story')" style="cursor:pointer">An Unfinished Love Story</h3>
                 <p class="author">by Doris Kearns Goodwin</p>
                 <p class="description">A touching history of her marriage, written after her husband's passing — love, memory, and American history intertwined.</p>
@@ -595,12 +573,9 @@
         </div>
         
         <div class="book-card">
-            <div class="book-date">
-                <div class="month">May</div>
-                <div class="day">21</div>
-            </div>
             <img src="covers/rose-code.jpg" alt="The Rose Code cover" class="book-cover" onclick="openModal('rose-code')" style="cursor:pointer">
             <div class="book-info">
+                <div class="book-date">May 21</div>
                 <h3 onclick="openModal('rose-code')" style="cursor:pointer">The Rose Code</h3>
                 <p class="author">by Kate Quinn</p>
                 <p class="description">A gripping fictional account of female code breakers in WWII England — secrets, friendship, and wartime courage.</p>
@@ -610,12 +585,9 @@
         </div>
         
         <div class="book-card">
-            <div class="book-date">
-                <div class="month">Jun</div>
-                <div class="day">18</div>
-            </div>
             <img src="covers/offing.jpg" alt="The Offing cover" class="book-cover" onclick="openModal('offing')" style="cursor:pointer">
             <div class="book-info">
+                <div class="book-date">June 18</div>
                 <h3 onclick="openModal('offing')" style="cursor:pointer">The Offing</h3>
                 <p class="author">by Benjamin Myers</p>
                 <p class="description">A lyrical coming-of-age tale set in post-WWII England — an unlikely friendship, poetry, and the beauty of the Yorkshire coast.</p>
