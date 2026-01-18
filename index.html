@@ -818,7 +818,7 @@
                 <p class="author">by Carl S. Anthony</p>
                 <p class="description">Biography of early Jacqueline Kennedy — discover the fascinating woman before she became First Lady.</p>
             </div>
-            <span class="book-availability" onclick="event.stopPropagation()">📚 Library</span>
+            <a href="https://sonomalibrary.org" target="_blank" class="book-availability" onclick="event.stopPropagation()">📚 Library</a>
             <a href="https://www.amazon.com/s?k=Camera+Girl+Carl+Anthony" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
         
@@ -842,7 +842,7 @@
                 <p class="author">by Doris Kearns Goodwin</p>
                 <p class="description">A touching history of her marriage, written after her husband's passing — love, memory, and American history intertwined.</p>
             </div>
-            <span class="book-availability" onclick="event.stopPropagation()">📚 Library</span>
+            <a href="https://sonomalibrary.org" target="_blank" class="book-availability" onclick="event.stopPropagation()">📚 Library</a>
             <a href="https://www.amazon.com/s?k=An+Unfinished+Love+Story+Doris+Kearns+Goodwin" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
         
@@ -866,7 +866,7 @@
                 <p class="author">by Benjamin Myers</p>
                 <p class="description">A lyrical coming-of-age tale set in post-WWII England — an unlikely friendship, poetry, and the beauty of the Yorkshire coast.</p>
             </div>
-            <span class="book-availability" onclick="event.stopPropagation()">📚 Check Library</span>
+            <a href="https://sonomalibrary.org" target="_blank" class="book-availability" onclick="event.stopPropagation()">📚 Check Library</a>
             <a href="https://www.amazon.com/s?k=The+Offing+Benjamin+Myers" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
     </section>
@@ -979,8 +979,9 @@
             `;
             
             document.getElementById('modalButtons').innerHTML = `
-                <a href="${book.goodreads}" target="_blank" class="modal-btn modal-btn-secondary">📚 Goodreads</a>
-                <a href="${book.amazon}" target="_blank" class="modal-btn modal-btn-primary">🛒 Buy on Amazon</a>
+                <a href="https://sonomalibrary.org" target="_blank" class="modal-btn modal-btn-secondary">📚 Library</a>
+                <a href="${book.goodreads}" target="_blank" class="modal-btn modal-btn-secondary">⭐ Goodreads</a>
+                <a href="${book.amazon}" target="_blank" class="modal-btn modal-btn-primary">🛒 Amazon</a>
             `;
             
             document.getElementById('bookModal').classList.add('active');
