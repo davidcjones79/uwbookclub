@@ -161,11 +161,19 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             display: grid;
-            grid-template-columns: auto 1fr auto auto;
+            grid-template-columns: auto auto 1fr auto auto;
             gap: 20px;
             align-items: center;
             transition: transform 0.3s ease;
             border-left: 5px solid #d4a574;
+        }
+        
+        .book-cover {
+            width: 70px;
+            height: 105px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
         }
         
         .book-card:hover {
@@ -298,6 +306,7 @@
                 <div class="month">Feb</div>
                 <div class="day">19</div>
             </div>
+            <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="book-cover">
             <div class="book-info">
                 <h3>Camera Girl</h3>
                 <p class="author">by Carl S. Anthony</p>
@@ -312,6 +321,7 @@
                 <div class="month">Mar</div>
                 <div class="day">19</div>
             </div>
+            <img src="covers/emma.jpg" alt="Emma cover" class="book-cover">
             <div class="book-info">
                 <h3>Emma</h3>
                 <p class="author">by Jane Austen</p>
@@ -326,6 +336,7 @@
                 <div class="month">Apr</div>
                 <div class="day">16</div>
             </div>
+            <img src="covers/unfinished-love-story.jpg" alt="An Unfinished Love Story cover" class="book-cover">
             <div class="book-info">
                 <h3>An Unfinished Love Story</h3>
                 <p class="author">by Doris Kearns Goodwin</p>
@@ -340,6 +351,7 @@
                 <div class="month">May</div>
                 <div class="day">21</div>
             </div>
+            <img src="covers/rose-code.jpg" alt="The Rose Code cover" class="book-cover">
             <div class="book-info">
                 <h3>The Rose Code</h3>
                 <p class="author">by Kate Quinn</p>
@@ -354,6 +366,7 @@
                 <div class="month">Jun</div>
                 <div class="day">18</div>
             </div>
+            <img src="covers/offing.jpg" alt="The Offing cover" class="book-cover">
             <div class="book-info">
                 <h3>The Offing</h3>
                 <p class="author">by Benjamin Myers</p>
