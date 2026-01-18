@@ -87,6 +87,68 @@
             color: #ffb000;
         }
         
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #ffb000;
+            transition: all 0.3s;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        @media (max-width: 600px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(245, 240, 230, 0.98);
+                flex-direction: column;
+                padding: 0;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 1px solid #ccc;
+            }
+            
+            .nav-links.active {
+                max-height: 300px;
+            }
+            
+            .nav-links a {
+                padding: 15px 30px;
+                border-top: 1px solid #ddd;
+                width: 100%;
+                text-align: center;
+                color: #666;
+            }
+        }
+        
         .main-content {
             max-width: 900px;
             margin: 0 auto;
@@ -426,12 +488,24 @@
 <body>
     <nav class="sticky-nav">
         <a href="index.html" class="site-logo"><span>&lt;/&gt;</span> uwbc</a>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="index.html#books">Reading List</a>
             <a href="about-site.html">About Site</a>
         </div>
     </nav>
+    
+    <script>
+    function toggleMenu() {
+        document.querySelector('.hamburger').classList.toggle('active');
+        document.querySelector('.nav-links').classList.toggle('active');
+    }
+    </script>
     
     <main class="main-content">
         <h1 class="page-title">// Build Your Mom a Website</h1>

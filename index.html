@@ -123,6 +123,66 @@
             opacity: 1;
         }
         
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        @media (max-width: 600px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(114, 47, 55, 0.98);
+                flex-direction: column;
+                padding: 0;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .nav-links.active {
+                max-height: 300px;
+            }
+            
+            .nav-links a {
+                padding: 15px 30px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
         .back-link {
             position: fixed;
             top: 20px;
@@ -784,13 +844,29 @@
     <!-- <a href="showcase.html" class="back-link">← See All Designs</a> -->
     <nav class="sticky-nav">
         <a href="#" class="site-logo"><span>☕</span> Unique Women's Book Club</a>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#books">Reading List</a>
-            <a href="#contact">Contact</a>
+            <a href="#hero" onclick="closeMenu()">Home</a>
+            <a href="#books" onclick="closeMenu()">Reading List</a>
+            <a href="#contact" onclick="closeMenu()">Contact</a>
             <a href="about-site.html">About This Site</a>
         </div>
     </nav>
+    
+    <script>
+    function toggleMenu() {
+        document.querySelector('.hamburger').classList.toggle('active');
+        document.querySelector('.nav-links').classList.toggle('active');
+    }
+    function closeMenu() {
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('active');
+    }
+    </script>
     
     <div class="coffee-stain stain-1"></div>
     <div class="coffee-stain stain-2"></div>
