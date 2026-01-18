@@ -389,6 +389,22 @@
             font-size: 1.5rem;
         }
         
+        footer .credit {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+        
+        footer .credit a {
+            color: #d4a574;
+            text-decoration: none;
+        }
+        
+        footer .credit a:hover {
+            text-decoration: underline;
+        }
+        
         @media (max-width: 700px) {
             header {
                 padding: 60px 15px 40px;
@@ -614,6 +630,7 @@
     
     <footer>
         <p>See you at Aqus! ☕📚</p>
+        <p class="credit">Made with ❤️ by David & Anne Jones on <a href="https://exe.dev" target="_blank">exe.dev</a> with <a href="https://exe.dev/shelley" target="_blank">Shelley</a></p>
     </footer>
 <!-- Book Modal -->
     <div class="modal-overlay" id="bookModal" onclick="closeModal(event)">
