@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Women Book Club - Modern Minimalist</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #333;
+        }
+        
+        header {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 60px;
+            text-align: center;
+        }
+        
+        .club-badge {
+            background: #1a1a1a;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+        
+        h1 span {
+            display: block;
+        }
+        
+        h1 .accent {
+            font-style: italic;
+            font-weight: 400;
+        }
+        
+        .hero-details {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .hero-details strong {
+            color: #1a1a1a;
+        }
+        
+        .divider {
+            width: 100px;
+            height: 4px;
+            background: #1a1a1a;
+            margin: 80px auto 60px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2px;
+            background: #e0e0e0;
+            max-width: 900px;
+            margin: 0 auto 100px;
+        }
+        
+        .info-cell {
+            background: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .info-cell .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .info-cell .value {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .books-section {
+            background: white;
+            padding: 80px 20px;
+        }
+        
+        .books-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+        
+        .books-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .books-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .books-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .book-row {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 30px;
+            align-items: start;
+            padding: 35px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .book-row:first-child {
+            border-top: 1px solid #eee;
+        }
+        
+        .book-number {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ddd;
+            line-height: 1;
+        }
+        
+        .book-main h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .book-main .author {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .book-main .description {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .book-meta {
+            text-align: right;
+        }
+        
+        .book-date {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .book-availability {
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        footer h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        footer p {
+            color: #888;
+        }
+        
+        @media (max-width: 700px) {
+            .book-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .book-number {
+                font-size: 2rem;
+            }
+            
+            .book-meta {
+                text-align: left;
+                display: flex;
+                gap: 20px;
+            }
+            
+            .hero-details {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← All Concepts</a>
+    
+    <header>
+        <div class="club-badge">Petaluma, California</div>
+        <h1>
+            <span>Unique</span>
+            <span class="accent">Women</span>
+        </h1>
+        <div class="hero-details">
+            <span><strong>Third Thursday</strong> monthly</span>
+            <span><strong>2:30 PM</strong></span>
+            <span>at <strong>Aqus Café</strong></span>
+        </div>
+    </header>
+    
+    <div class="divider"></div>
+    
+    <div class="info-grid">
+        <div class="info-cell">
+            <div class="label">Schedule</div>
+            <div class="value">6 Months</div>
+        </div>
+        <div class="info-cell">
+            <div class="label">This Season</div>
+            <div class="value">5 Books</div>
+        </div>
+        <div class="info-cell">
+            <div class="label">Next Up</div>
+            <div class="value">Feb 19</div>
+        </div>
+    </div>
+    
+    <section class="books-section">
+        <div class="books-header">
+            <h2>Reading List</h2>
+            <p>Our carefully curated selection for the season ahead</p>
+        </div>
+        
+        <div class="books-list">
+            <div class="book-row">
+                <div class="book-number">01</div>
+                <div class="book-main">
+                    <h3>Camera Girl</h3>
+                    <p class="author">Carl S. Anthony</p>
+                    <p class="description">The untold story of Jacqueline Kennedy's formative years—ambitious, creative, and fiercely independent.</p>
+                </div>
+                <div class="book-meta">
+                    <div class="book-date">Feb 19</div>
+                    <div class="book-availability">Library</div>
+                </div>
+            </div>
+            
+            <div class="book-row">
+                <div class="book-number">02</div>
+                <div class="book-main">
+                    <h3>Emma</h3>
+                    <p class="author">Jane Austen</p>
+                    <p class="description">250th anniversary edition. A comedy of manners and misguided matchmaking.</p>
+                </div>
+                <div class="book-meta">
+                    <div class="book-date">Mar 19</div>
+                    <div class="book-availability">Free apps</div>
+                </div>
+            </div>
+            
+            <div class="book-row">
+                <div class="book-number">03</div>
+                <div class="book-main">
+                    <h3>An Unfinished Love Story</h3>
+                    <p class="author">Doris Kearns Goodwin</p>
+                    <p class="description">History, memoir, and meditation on love from the acclaimed historian.</p>
+                </div>
+                <div class="book-meta">
+                    <div class="book-date">Apr 16</div>
+                    <div class="book-availability">Library (22)</div>
+                </div>
+            </div>
+            
+            <div class="book-row">
+                <div class="book-number">04</div>
+                <div class="book-main">
+                    <h3>The Rose Code</h3>
+                    <p class="author">Kate Quinn</p>
+                    <p class="description">Female codebreakers at Bletchley Park. Secrets, friendship, wartime courage.</p>
+                </div>
+                <div class="book-meta">
+                    <div class="book-date">May 21</div>
+                    <div class="book-availability">Purchase</div>
+                </div>
+            </div>
+            
+            <div class="book-row">
+                <div class="book-number">05</div>
+                <div class="book-main">
+                    <h3>The Offing</h3>
+                    <p class="author">Benjamin Myers</p>
+                    <p class="description">Post-war England. A young man, an eccentric mentor, the sea.</p>
+                </div>
+                <div class="book-meta">
+                    <div class="book-date">Jun 18</div>
+                    <div class="book-availability">Check library</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <h3>See you there.</h3>
+        <p>Aqus Café • Petaluma • Third Thursday • 2:30 PM</p>
+    </footer>
+</body>
+</html>

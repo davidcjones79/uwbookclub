@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Women Book Club - Botanical Pages</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #f8f6f1;
+            color: #3d4a3e;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(77, 107, 83, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        
+        .back-link:hover {
+            background: rgba(77, 107, 83, 1);
+        }
+        
+        /* Decorative leaves */
+        .leaf {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        .leaf-1 { top: 80px; right: 5%; transform: rotate(25deg); }
+        .leaf-2 { top: 300px; left: 3%; transform: rotate(-15deg); font-size: 2.5rem; }
+        .leaf-3 { top: 600px; right: 8%; transform: rotate(45deg); font-size: 2rem; }
+        .leaf-4 { bottom: 400px; left: 5%; transform: rotate(-30deg); }
+        .leaf-5 { bottom: 150px; right: 3%; transform: rotate(10deg); font-size: 2.5rem; }
+        
+        header {
+            text-align: center;
+            padding: 90px 20px 60px;
+            background: linear-gradient(180deg, #e8efe5 0%, #f8f6f1 100%);
+            position: relative;
+        }
+        
+        .botanical-frame {
+            display: inline-block;
+            padding: 40px 60px;
+            border: 2px solid #7a9f7f;
+            border-radius: 100px;
+            position: relative;
+        }
+        
+        .botanical-frame::before {
+            content: '🌿';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.8rem;
+            background: #e8efe5;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-family: 'Marcellus', serif;
+            font-size: 3rem;
+            color: #4d6b53;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #7a9f7f;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .meeting-card {
+            background: white;
+            max-width: 550px;
+            margin: -30px auto 50px;
+            padding: 35px 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(77, 107, 83, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .meeting-card h2 {
+            font-family: 'Marcellus', serif;
+            color: #4d6b53;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        
+        .meeting-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            background: #e8efe5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .detail-text {
+            text-align: left;
+        }
+        
+        .detail-text small {
+            color: #7a9f7f;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .detail-text p {
+            font-weight: 600;
+            color: #3d4a3e;
+        }
+        
+        .location-badge {
+            background: linear-gradient(135deg, #4d6b53 0%, #6a8f70 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 600;
+        }
+        
+        .books-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .section-header span {
+            font-size: 1.5rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Marcellus', serif;
+            font-size: 2rem;
+            color: #4d6b53;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #7a9f7f, #d4e4d6);
+            border-radius: 3px;
+        }
+        
+        .book-item {
+            position: relative;
+            background: white;
+            padding: 25px 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .book-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .book-item::before {
+            content: '🌱';
+            position: absolute;
+            left: -33px;
+            top: 30px;
+            font-size: 1.2rem;
+            background: #f8f6f1;
+            padding: 5px 0;
+        }
+        
+        .book-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .book-item h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 1.4rem;
+            color: #3d4a3e;
+        }
+        
+        .book-date {
+            background: #e8efe5;
+            color: #4d6b53;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .book-item .author {
+            color: #7a9f7f;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .book-item .description {
+            color: #5a6a5c;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .availability-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            color: #4d6b53;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(0deg, #e8efe5 0%, #f8f6f1 100%);
+        }
+        
+        footer p {
+            font-family: 'Marcellus', serif;
+            font-size: 1.3rem;
+            color: #4d6b53;
+        }
+        
+        footer .small {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            color: #7a9f7f;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .botanical-frame {
+                padding: 30px 30px;
+            }
+            
+            .meeting-details {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← All Concepts</a>
+    
+    <span class="leaf leaf-1">🌿</span>
+    <span class="leaf leaf-2">🍀</span>
+    <span class="leaf leaf-3">🌿</span>
+    <span class="leaf leaf-4">🍃</span>
+    <span class="leaf leaf-5">🌿</span>
+    
+    <header>
+        <div class="botanical-frame">
+            <h1>Unique Women<br>Book Club</h1>
+            <p class="tagline">WHERE STORIES BLOOM</p>
+        </div>
+    </header>
+    
+    <div class="meeting-card">
+        <h2>Join Our Garden of Readers</h2>
+        <div class="meeting-details">
+            <div class="detail-item">
+                <div class="detail-icon">📅</div>
+                <div class="detail-text">
+                    <small>When</small>
+                    <p>Third Thursday</p>
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-icon">⏰</div>
+                <div class="detail-text">
+                    <small>Time</small>
+                    <p>2:30 PM</p>
+                </div>
+            </div>
+        </div>
+        <div class="location-badge">🌻 Aqus Café, Petaluma</div>
+    </div>
+    
+    <section class="books-section">
+        <div class="section-header">
+            <span>📗</span>
+            <h2>Our Growing Reading List</h2>
+            <span>📗</span>
+        </div>
+        
+        <div class="timeline">
+            <div class="book-item">
+                <div class="book-header">
+                    <h3>Camera Girl</h3>
+                    <span class="book-date">Feb 19</span>
+                </div>
+                <p class="author">by Carl S. Anthony</p>
+                <p class="description">Step into the early life of Jacqueline Kennedy in this captivating biography — before the glamour, before Camelot, discover the woman who would become an icon.</p>
+                <span class="availability-tag">✓ Available at library</span>
+            </div>
+            
+            <div class="book-item">
+                <div class="book-header">
+                    <h3>Emma</h3>
+                    <span class="book-date">Mar 19</span>
+                </div>
+                <p class="author">by Jane Austen</p>
+                <p class="description">Celebrating 250 years of Austen! A delightful tale of a young woman who fancies herself a matchmaker, only to discover that love has plans of its own.</p>
+                <span class="availability-tag">✓ Free on reading apps</span>
+            </div>
+            
+            <div class="book-item">
+                <div class="book-header">
+                    <h3>An Unfinished Love Story</h3>
+                    <span class="book-date">Apr 16</span>
+                </div>
+                <p class="author">by Doris Kearns Goodwin</p>
+                <p class="description">A deeply personal memoir intertwining history and love — the Pulitzer Prize-winning historian reflects on her marriage after her husband's passing.</p>
+                <span class="availability-tag">✓ 22 copies at library</span>
+            </div>
+            
+            <div class="book-item">
+                <div class="book-header">
+                    <h3>The Rose Code</h3>
+                    <span class="book-date">May 21</span>
+                </div>
+                <p class="author">by Kate Quinn</p>
+                <p class="description">Three women. One secret. A thrilling fictional journey into the lives of female codebreakers at Bletchley Park during World War II.</p>
+                <span class="availability-tag">○ Not yet at library</span>
+            </div>
+            
+            <div class="book-item">
+                <div class="book-header">
+                    <h3>The Offing</h3>
+                    <span class="book-date">Jun 18</span>
+                </div>
+                <p class="author">by Benjamin Myers</p>
+                <p class="description">A lyrical summer read about an unlikely friendship on the Yorkshire coast — a young man, an eccentric woman, and the poetry that connects them.</p>
+                <span class="availability-tag">○ Check library</span>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>🌿 Happy Reading, Unique Women! 🌿</p>
+        <p class="small">Books selected six months at a time with love</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Women Book Club - Watercolor Storybook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Patrick+Hand&family=Quicksand:wght@400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, #fdf6f0 0%, #f9ede3 50%, #fce4ec 100%);
+            color: #5d4954;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(180, 131, 141, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        
+        .back-link:hover {
+            background: rgba(180, 131, 141, 1);
+        }
+        
+        /* Watercolor blob decorations */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: #f8d7da;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .blob-2 {
+            width: 200px;
+            height: 200px;
+            background: #d4edda;
+            top: 400px;
+            left: -50px;
+        }
+        
+        .blob-3 {
+            width: 250px;
+            height: 250px;
+            background: #cce5ff;
+            bottom: 300px;
+            right: -50px;
+        }
+        
+        .blob-4 {
+            width: 180px;
+            height: 180px;
+            background: #fff3cd;
+            bottom: 100px;
+            left: 10%;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+        
+        .book-illustration {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #b4838d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+        
+        .tagline {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.6rem;
+            color: #9d7a82;
+        }
+        
+        .whimsy-divider {
+            font-size: 1.5rem;
+            margin: 30px 0;
+            letter-spacing: 10px;
+        }
+        
+        .meeting-bubble {
+            background: white;
+            max-width: 500px;
+            margin: 0 auto 60px;
+            padding: 35px 40px;
+            border-radius: 30px 30px 30px 5px;
+            box-shadow: 0 10px 40px rgba(180, 131, 141, 0.15);
+            text-align: center;
+            position: relative;
+        }
+        
+        .meeting-bubble::after {
+            content: '💬';
+            position: absolute;
+            bottom: -25px;
+            left: 30px;
+            font-size: 2rem;
+            transform: scaleX(-1);
+        }
+        
+        .meeting-bubble h2 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.5rem;
+            color: #b4838d;
+            margin-bottom: 15px;
+        }
+        
+        .meeting-bubble p {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #7a6068;
+        }
+        
+        .location-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #f8d7da 0%, #fce4ec 100%);
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            color: #9d7a82;
+        }
+        
+        .books-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        
+        .section-title {
+            font-family: 'Amatic SC', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #b4838d;
+            margin-bottom: 40px;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(180, 131, 141, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px) rotate(1deg);
+        }
+        
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            border-radius: 25px 25px 0 0;
+        }
+        
+        .book-card:nth-child(1)::before { background: linear-gradient(90deg, #ffb3ba, #ffdfba); }
+        .book-card:nth-child(2)::before { background: linear-gradient(90deg, #bae1ff, #baffc9); }
+        .book-card:nth-child(3)::before { background: linear-gradient(90deg, #ffffba, #ffb3ba); }
+        .book-card:nth-child(4)::before { background: linear-gradient(90deg, #baffc9, #bae1ff); }
+        .book-card:nth-child(5)::before { background: linear-gradient(90deg, #ffdfba, #ffffba); }
+        
+        .book-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .book-card .date {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
+            color: #b4838d;
+            margin-bottom: 8px;
+        }
+        
+        .book-card h3 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2rem;
+            color: #5d4954;
+            margin-bottom: 5px;
+        }
+        
+        .book-card .author {
+            font-family: 'Patrick Hand', cursive;
+            color: #9d7a82;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .book-card .description {
+            font-size: 0.95rem;
+            color: #7a6068;
+            line-height: 1.6;
+        }
+        
+        .book-card .availability {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 15px;
+            background: #fdf6f0;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #b4838d;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(0deg, rgba(180, 131, 141, 0.1) 0%, transparent 100%);
+        }
+        
+        footer p {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.5rem;
+            color: #b4838d;
+        }
+        
+        footer .hearts {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            letter-spacing: 5px;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .book-illustration {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← All Concepts</a>
+    
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    
+    <div class="container">
+        <header>
+            <div class="book-illustration">📖✨</div>
+            <h1>Unique Women Book Club</h1>
+            <p class="tagline">Where every page is an adventure!</p>
+            <div class="whimsy-divider">✩ ★ ✩</div>
+        </header>
+        
+        <div class="meeting-bubble">
+            <h2>Come Read With Us!</h2>
+            <p>Every <strong>Third Thursday</strong><br>
+at <strong>2:30 in the afternoon</strong></p>
+            <div class="location-tag">☕ Aqus Café in Petaluma</div>
+        </div>
+        
+        <section class="books-section">
+            <h2 class="section-title">🌟 Our Magical Reading List 🌟</h2>
+            
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-emoji">📷</div>
+                    <div class="date">February 19th</div>
+                    <h3>Camera Girl</h3>
+                    <p class="author">by Carl S. Anthony</p>
+                    <p class="description">The inspiring story of young Jackie Kennedy before she became a legend!</p>
+                    <span class="availability">📚 At the library!</span>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-emoji">💗</div>
+                    <div class="date">March 19th</div>
+                    <h3>Emma</h3>
+                    <p class="author">by Jane Austen</p>
+                    <p class="description">A 250-year celebration! Matchmaking, mischief, and matters of the heart.</p>
+                    <span class="availability">📱 Free on apps!</span>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-emoji">💕</div>
+                    <div class="date">April 16th</div>
+                    <h3>An Unfinished Love Story</h3>
+                    <p class="author">by Doris Kearns Goodwin</p>
+                    <p class="description">A beautiful tribute to love, loss, and a life shared together.</p>
+                    <span class="availability">📚 22 at library!</span>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-emoji">🌹</div>
+                    <div class="date">May 21st</div>
+                    <h3>The Rose Code</h3>
+                    <p class="author">by Kate Quinn</p>
+                    <p class="description">Brave women cracking codes and keeping secrets in wartime Britain!</p>
+                    <span class="availability">🛍️ Purchase needed</span>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-emoji">🌊</div>
+                    <div class="date">June 18th</div>
+                    <h3>The Offing</h3>
+                    <p class="author">by Benjamin Myers</p>
+                    <p class="description">A dreamy summer tale of friendship by the sea and the poetry of life.</p>
+                    <span class="availability">📚 Check library</span>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Happy Reading, Friends! 📚✨</p>
+            <div class="hearts">🧡 💛 💚 💙 💜</div>
+        </footer>
+    </div>
+</body>
+</html>

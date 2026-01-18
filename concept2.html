@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Women Book Club - Vintage Library</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: #1a1512;
+            color: #e8dcc8;
+            min-height: 100vh;
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(139, 69, 75, 0.9);
+            color: #e8dcc8;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        
+        .back-link:hover {
+            background: rgba(139, 69, 75, 1);
+        }
+        
+        /* Aged paper texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            border-bottom: 1px solid rgba(196, 164, 132, 0.3);
+            background: linear-gradient(180deg, rgba(114, 47, 55, 0.2) 0%, transparent 100%);
+        }
+        
+        .ornament {
+            color: #c4a484;
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: #c4a484;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-size: 1.4rem;
+            color: #a89580;
+            letter-spacing: 3px;
+        }
+        
+        .gold-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c4a484, transparent);
+            margin: 30px auto;
+        }
+        
+        .meeting-banner {
+            background: linear-gradient(135deg, #722f37 0%, #5a242a 100%);
+            border: 1px solid #c4a484;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .meeting-banner::before,
+        .meeting-banner::after {
+            content: '❦';
+            position: absolute;
+            font-size: 1.5rem;
+            color: #c4a484;
+        }
+        
+        .meeting-banner::before {
+            top: 10px;
+            left: 15px;
+        }
+        
+        .meeting-banner::after {
+            bottom: 10px;
+            right: 15px;
+        }
+        
+        .meeting-banner h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #c4a484;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+        
+        .meeting-banner p {
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+        
+        .meeting-banner .location {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(196, 164, 132, 0.3);
+            font-style: italic;
+        }
+        
+        .books-section {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            text-align: center;
+            color: #c4a484;
+            letter-spacing: 6px;
+            margin-bottom: 50px;
+        }
+        
+        .book-entry {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(196, 164, 132, 0.2);
+        }
+        
+        .book-entry:last-child {
+            border-bottom: none;
+        }
+        
+        .book-spine {
+            width: 60px;
+            min-height: 180px;
+            background: linear-gradient(90deg, #722f37 0%, #8b454b 50%, #722f37 100%);
+            border-radius: 3px 0 0 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #c4a484;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+        }
+        
+        .book-content {
+            flex: 1;
+        }
+        
+        .book-date-line {
+            font-family: 'Cinzel', serif;
+            color: #c4a484;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .book-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: #e8dcc8;
+            margin-bottom: 8px;
+        }
+        
+        .book-content .author {
+            font-style: italic;
+            color: #a89580;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .book-content .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c9baa8;
+        }
+        
+        .book-content .availability {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 15px;
+            border: 1px solid #c4a484;
+            font-size: 0.9rem;
+            color: #c4a484;
+            letter-spacing: 1px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(0deg, rgba(114, 47, 55, 0.3) 0%, transparent 100%);
+            border-top: 1px solid rgba(196, 164, 132, 0.3);
+        }
+        
+        footer .ornament {
+            margin-bottom: 10px;
+        }
+        
+        footer p {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #a89580;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+            
+            .book-entry {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .book-spine {
+                width: 100%;
+                min-height: auto;
+                height: 50px;
+                writing-mode: horizontal-tb;
+                transform: none;
+                border-radius: 3px 3px 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← All Concepts</a>
+    
+    <div class="container">
+        <header>
+            <div class="ornament">• ✦ •</div>
+            <h1>Unique Women</h1>
+            <div class="gold-divider"></div>
+            <p class="tagline">A Literary Society</p>
+        </header>
+        
+        <div class="meeting-banner">
+            <h2>Our Gatherings</h2>
+            <p>Every <strong>Third Thursday</strong><br>
+            at <strong>Half Past Two</strong> in the Afternoon</p>
+            <p class="location">Aqus Café • Petaluma, California</p>
+        </div>
+        
+        <section class="books-section">
+            <h2 class="section-title">— The Reading Calendar —</h2>
+            
+            <div class="book-entry">
+                <div class="book-spine">FEBRUARY</div>
+                <div class="book-content">
+                    <div class="book-date-line">WEDNESDAY, FEBRUARY 19TH</div>
+                    <h3>Camera Girl</h3>
+                    <p class="author">by Carl S. Anthony</p>
+                    <p class="description">An intimate biography exploring the formative years of Jacqueline Kennedy — before Camelot, before the White House, the woman who would captivate a nation.</p>
+                    <span class="availability">• Available at Library •</span>
+                </div>
+            </div>
+            
+            <div class="book-entry">
+                <div class="book-spine">MARCH</div>
+                <div class="book-content">
+                    <div class="book-date-line">WEDNESDAY, MARCH 19TH</div>
+                    <h3>Emma</h3>
+                    <p class="author">by Jane Austen</p>
+                    <p class="description">In celebration of the 250th anniversary of Austen's birth, we revisit this sparkling comedy of manners — where a well-meaning matchmaker discovers that matters of the heart cannot be so easily arranged.</p>
+                    <span class="availability">• Free on Reading Apps •</span>
+                </div>
+            </div>
+            
+            <div class="book-entry">
+                <div class="book-spine">APRIL</div>
+                <div class="book-content">
+                    <div class="book-date-line">WEDNESDAY, APRIL 16TH</div>
+                    <h3>An Unfinished Love Story</h3>
+                    <p class="author">by Doris Kearns Goodwin</p>
+                    <p class="description">The celebrated historian weaves together memoir, history, and a profound meditation on love — written in the wake of her husband's passing, a testament to their extraordinary partnership.</p>
+                    <span class="availability">• 22 Copies at Library •</span>
+                </div>
+            </div>
+            
+            <div class="book-entry">
+                <div class="book-spine">MAY</div>
+                <div class="book-content">
+                    <div class="book-date-line">WEDNESDAY, MAY 21ST</div>
+                    <h3>The Rose Code</h3>
+                    <p class="author">by Kate Quinn</p>
+                    <p class="description">A riveting tale of three women at Bletchley Park, where secrets and codebreaking intertwine with friendship and betrayal during the darkest days of the Second World War.</p>
+                    <span class="availability">• Purchase Recommended •</span>
+                </div>
+            </div>
+            
+            <div class="book-entry">
+                <div class="book-spine">JUNE</div>
+                <div class="book-content">
+                    <div class="book-date-line">WEDNESDAY, JUNE 18TH</div>
+                    <h3>The Offing</h3>
+                    <p class="author">by Benjamin Myers</p>
+                    <p class="description">A luminous coming-of-age novel set along the Yorkshire coast after the war. A young miner's son encounters an eccentric older woman, and together they discover the transformative power of poetry, nature, and unexpected friendship.</p>
+                    <span class="availability">• Check Library Availability •</span>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="ornament">• ✦ •</div>
+            <p>"A reader lives a thousand lives before he dies." — George R.R. Martin</p>
+        </footer>
+    </div>
+</body>
+</html>
