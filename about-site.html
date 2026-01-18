@@ -438,10 +438,58 @@
             <p>It's a wonderful example of how AI tools can help people bring their creative ideas to life, making web development accessible to everyone.</p>
             <p>The site is hosted on <strong>GitHub Pages</strong> and will be updated as the book club selects new books for future months.</p>
             
-            <div class="site-preview">
-                <img src="covers/site-screenshot.jpg" alt="Screenshot of the Unique Women's Book Club website homepage showing the hero section with Aqus Café background and the next meeting details" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(74, 55, 40, 0.15); margin-top: 20px;">
-                <p style="text-align: center; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; color: #8b6914; margin-top: 12px;">The finished homepage at <a href="https://uwbookclub.com" target="_blank">uwbookclub.com</a></p>
+            <div class="screenshot-carousel" style="margin-top: 20px; position: relative;">
+                <div class="carousel-container" style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 20px rgba(74, 55, 40, 0.15);">
+                    <div class="carousel-slides" style="display: flex; transition: transform 0.4s ease;">
+                        <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                            <img src="covers/site-screenshot.jpg" alt="Homepage hero section with Aqus Café background" style="width: 100%; display: block;">
+                            <div class="slide-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; padding: 12px 15px; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem;">Homepage with the hero section and next meeting info</div>
+                        </div>
+                        <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                            <img src="covers/site-screenshot-books.jpg" alt="Reading list showing upcoming books" style="width: 100%; display: block;">
+                            <div class="slide-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; padding: 12px 15px; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem;">The reading list with book covers and details</div>
+                        </div>
+                        <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                            <img src="covers/site-screenshot-modal.jpg" alt="Book details modal for Camera Girl" style="width: 100%; display: block;">
+                            <div class="slide-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; padding: 12px 15px; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem;">Click any book to see detailed information</div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev" onclick="moveCarousel(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(114, 47, 55, 0.85); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarousel(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(114, 47, 55, 0.85); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">›</button>
+                </div>
+                <div class="carousel-dots" style="display: flex; justify-content: center; gap: 8px; margin-top: 15px;">
+                    <button class="dot active" onclick="goToSlide(0)" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: #722f37; cursor: pointer;"></button>
+                    <button class="dot" onclick="goToSlide(1)" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: #d4c4b5; cursor: pointer;"></button>
+                    <button class="dot" onclick="goToSlide(2)" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: #d4c4b5; cursor: pointer;"></button>
+                </div>
+                <p style="text-align: center; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; color: #8b6914; margin-top: 12px;">The finished site at <a href="https://uwbookclub.com" target="_blank">uwbookclub.com</a></p>
             </div>
+            
+            <script>
+            (function() {
+                let currentSlide = 0;
+                const totalSlides = 3;
+                
+                window.moveCarousel = function(direction) {
+                    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+                    updateCarousel();
+                };
+                
+                window.goToSlide = function(index) {
+                    currentSlide = index;
+                    updateCarousel();
+                };
+                
+                function updateCarousel() {
+                    const slides = document.querySelector('.carousel-slides');
+                    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    
+                    document.querySelectorAll('.carousel-dots .dot').forEach((dot, i) => {
+                        dot.style.background = i === currentSlide ? '#722f37' : '#d4c4b5';
+                    });
+                }
+            })();
+            </script>
         </section>
     </main>
     
