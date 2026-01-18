@@ -166,8 +166,13 @@
             grid-template-columns: auto 1fr auto auto;
             gap: 20px;
             align-items: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-left: 5px solid #d4a574;
+            cursor: pointer;
+        }
+        
+        .book-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
         
         .book-cover {
@@ -366,13 +371,9 @@
             color: white;
         }
         
-        .book-info h3:hover {
-            color: #6b4423;
-        }
-        
-        .book-cover:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s;
+        .book-availability:hover,
+        .buy-link:hover {
+            transform: scale(1.02);
         }
         
         footer {
@@ -550,64 +551,64 @@
     <section class="books-section">
         <h2>📖 Our 2026 Reading List</h2>
         
-        <div class="book-card">
-            <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="book-cover" onclick="openModal('camera-girl')" style="cursor:pointer">
+        <div class="book-card" onclick="openModal('camera-girl')">
+            <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="book-cover">
             <div class="book-info">
                 <div class="book-date">February 19</div>
-                <h3 onclick="openModal('camera-girl')" style="cursor:pointer">Camera Girl</h3>
+                <h3>Camera Girl</h3>
                 <p class="author">by Carl S. Anthony</p>
                 <p class="description">Biography of early Jacqueline Kennedy — discover the fascinating woman before she became First Lady.</p>
             </div>
-            <span class="book-availability">📚 Library</span>
-            <a href="https://www.amazon.com/s?k=Camera+Girl+Carl+Anthony" target="_blank" class="buy-link">🛒 Amazon</a>
+            <span class="book-availability" onclick="event.stopPropagation()">📚 Library</span>
+            <a href="https://www.amazon.com/s?k=Camera+Girl+Carl+Anthony" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
         
-        <div class="book-card">
-            <img src="covers/emma.jpg" alt="Emma cover" class="book-cover" onclick="openModal('emma')" style="cursor:pointer">
+        <div class="book-card" onclick="openModal('emma')">
+            <img src="covers/emma.jpg" alt="Emma cover" class="book-cover">
             <div class="book-info">
                 <div class="book-date">March 19</div>
-                <h3 onclick="openModal('emma')" style="cursor:pointer">Emma</h3>
+                <h3>Emma</h3>
                 <p class="author">by Jane Austen</p>
                 <p class="description">Celebrating 250 years of Austen! A witty tale of a young matchmaker who learns love isn't so easily arranged.</p>
             </div>
-            <span class="book-availability">📱 Free Apps</span>
-            <a href="https://www.amazon.com/s?k=Emma+Jane+Austen" target="_blank" class="buy-link">🛒 Amazon</a>
+            <span class="book-availability" onclick="event.stopPropagation()">📱 Free Apps</span>
+            <a href="https://www.amazon.com/s?k=Emma+Jane+Austen" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
         
-        <div class="book-card">
-            <img src="covers/unfinished-love-story.jpg" alt="An Unfinished Love Story cover" class="book-cover" onclick="openModal('unfinished-love-story')" style="cursor:pointer">
+        <div class="book-card" onclick="openModal('unfinished-love-story')">
+            <img src="covers/unfinished-love-story.jpg" alt="An Unfinished Love Story cover" class="book-cover">
             <div class="book-info">
                 <div class="book-date">April 16</div>
-                <h3 onclick="openModal('unfinished-love-story')" style="cursor:pointer">An Unfinished Love Story</h3>
+                <h3>An Unfinished Love Story</h3>
                 <p class="author">by Doris Kearns Goodwin</p>
                 <p class="description">A touching history of her marriage, written after her husband's passing — love, memory, and American history intertwined.</p>
             </div>
-            <span class="book-availability">📚 Library</span>
-            <a href="https://www.amazon.com/s?k=An+Unfinished+Love+Story+Doris+Kearns+Goodwin" target="_blank" class="buy-link">🛒 Amazon</a>
+            <span class="book-availability" onclick="event.stopPropagation()">📚 Library</span>
+            <a href="https://www.amazon.com/s?k=An+Unfinished+Love+Story+Doris+Kearns+Goodwin" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
         
-        <div class="book-card">
-            <img src="covers/rose-code.jpg" alt="The Rose Code cover" class="book-cover" onclick="openModal('rose-code')" style="cursor:pointer">
+        <div class="book-card" onclick="openModal('rose-code')">
+            <img src="covers/rose-code.jpg" alt="The Rose Code cover" class="book-cover">
             <div class="book-info">
                 <div class="book-date">May 21</div>
-                <h3 onclick="openModal('rose-code')" style="cursor:pointer">The Rose Code</h3>
+                <h3>The Rose Code</h3>
                 <p class="author">by Kate Quinn</p>
                 <p class="description">A gripping fictional account of female code breakers in WWII England — secrets, friendship, and wartime courage.</p>
             </div>
-            <span class="book-availability">🛒 Purchase</span>
-            <a href="https://www.amazon.com/s?k=The+Rose+Code+Kate+Quinn" target="_blank" class="buy-link">🛒 Amazon</a>
+            <span class="book-availability" onclick="event.stopPropagation()">🛒 Purchase</span>
+            <a href="https://www.amazon.com/s?k=The+Rose+Code+Kate+Quinn" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
         
-        <div class="book-card">
-            <img src="covers/offing.jpg" alt="The Offing cover" class="book-cover" onclick="openModal('offing')" style="cursor:pointer">
+        <div class="book-card" onclick="openModal('offing')">
+            <img src="covers/offing.jpg" alt="The Offing cover" class="book-cover">
             <div class="book-info">
                 <div class="book-date">June 18</div>
-                <h3 onclick="openModal('offing')" style="cursor:pointer">The Offing</h3>
+                <h3>The Offing</h3>
                 <p class="author">by Benjamin Myers</p>
                 <p class="description">A lyrical coming-of-age tale set in post-WWII England — an unlikely friendship, poetry, and the beauty of the Yorkshire coast.</p>
             </div>
-            <span class="book-availability">📚 Check Library</span>
-            <a href="https://www.amazon.com/s?k=The+Offing+Benjamin+Myers" target="_blank" class="buy-link">🛒 Amazon</a>
+            <span class="book-availability" onclick="event.stopPropagation()">📚 Check Library</span>
+            <a href="https://www.amazon.com/s?k=The+Offing+Benjamin+Myers" target="_blank" class="buy-link" onclick="event.stopPropagation()">🛒 Amazon</a>
         </div>
     </section>
     
