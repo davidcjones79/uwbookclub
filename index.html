@@ -72,10 +72,36 @@
             right: 15%;
         }
         
+        .hero {
+            position: relative;
+            background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/99/7e/e0/aqus-cafe-on-the-corner.jpg?w=1400&h=-1&s=1');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-bottom: 60px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(245, 235, 224, 0.85);
+            z-index: 1;
+        }
+        
         header {
             text-align: center;
             padding: 80px 20px 50px;
             position: relative;
+            z-index: 2;
+        }
+        
+        .meeting-info-wrapper {
+            position: relative;
+            z-index: 2;
         }
         
         .coffee-cup {
@@ -551,17 +577,21 @@
     <div class="coffee-stain stain-2"></div>
     <div class="coffee-stain stain-3"></div>
     
-    <header>
-        <div class="coffee-cup">☕</div>
-        <h1>Unique Women Book Club</h1>
-        <p class="tagline">Petaluma, California</p>
-    </header>
-    
-    <div class="meeting-info">
+    <div class="hero">
+        <header>
+            <div class="coffee-cup">☕</div>
+            <h1>Unique Women Book Club</h1>
+            <p class="tagline">Petaluma, California</p>
+        </header>
+        
+        <div class="meeting-info-wrapper">
+            <div class="meeting-info">
         <h2>Join Us Every Month</h2>
         <p><strong>Third Thursday</strong> of each month<br>
         <strong>2:30 PM</strong></p>
         <p class="location">📍 Aqus Café<br>189 H Street, Petaluma, CA 94952</p>
+            </div>
+        </div>
     </div>
     
     <section class="books-section">
