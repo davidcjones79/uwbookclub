@@ -338,19 +338,53 @@
         
         footer {
             text-align: center;
-            padding: 40px 30px;
+            padding: 50px 20px 40px;
+            background: #722f37;
+            color: #d4a574;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+        }
+        
+        .footer-info {
+            margin-top: 20px;
             font-family: 'Source Sans 3', sans-serif;
-            font-size: 0.9rem;
-            color: #8b8b8b;
+            font-size: 1rem;
         }
         
-        footer a {
-            color: #722f37;
-            text-decoration: none;
+        .footer-info p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            margin: 8px 0;
         }
         
-        footer a:hover {
+        .footer-info a {
+            color: #f5ebe0;
             text-decoration: underline;
+        }
+        
+        .meeting-reminder {
+            opacity: 0.8;
+            margin-top: 15px !important;
+        }
+        
+        .credit {
+            margin-top: 25px !important;
+            font-size: 0.85rem !important;
+            opacity: 0.7;
+        }
+        
+        .credit a {
+            color: #f5ebe0;
+        }
+        
+        .about-link {
+            margin-left: 15px;
+            padding-left: 15px;
+            border-left: 1px solid rgba(245, 235, 224, 0.3);
         }
         
         @media (max-width: 600px) {
@@ -561,8 +595,12 @@
     </main>
     
     <footer>
-        <p><a href="index.html">← Back to Unique Women's Book Club</a></p>
-        <p style="margin-top: 15px;">Made with ☕ and 🤖 in Petaluma, California</p>
+        <p>See you at Aqus! ☕📚</p>
+        <div class="footer-info">
+            <p><strong>Questions?</strong> Reach out to <a href="mailto:annesjones@hotmail.com">Anne</a></p>
+            <p class="meeting-reminder">Third Thursday • 2:30 PM • Aqus Café</p>
+        </div>
+        <p class="credit">Made with ❤️ by David & Anne Jones on <a href="https://exe.dev" target="_blank">exe.dev</a> with <a href="https://exe.dev/shelley" target="_blank">Shelley</a> <a href="index.html" class="about-link">← Back to main site</a></p>
     </footer>
 </body>
 </html>
