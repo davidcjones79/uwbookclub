@@ -286,6 +286,12 @@
         
         .meeting-book {
             text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .meeting-book:hover {
+            transform: scale(1.05);
         }
         
         .meeting-book-cover {
@@ -792,7 +798,7 @@
                         <p class="meeting-time">2:30 PM</p>
                         <p class="location">📍 Aqus Café<br>189 H Street, Petaluma, CA 94952</p>
                     </div>
-                    <div class="meeting-book">
+                    <div class="meeting-book" onclick="openModal('camera-girl')">
                         <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="meeting-book-cover">
                         <p class="meeting-book-title">Camera Girl</p>
                     </div>
