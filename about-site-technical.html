@@ -22,8 +22,8 @@
         
         body {
             font-family: 'Crimson Text', Georgia, serif;
-            background: #000;
-            color: #fff;
+            background: #f5f0e6;
+            color: #1a1a1a;
             min-height: 100vh;
         }
         
@@ -43,18 +43,18 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(245, 240, 230, 0.95);
             padding: 12px 30px;
             z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #ffb000;
+            border-bottom: 1px solid #ccc;
         }
         
         .site-logo {
-            color: #ffb000;
+            color: #1a1a1a;
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
             font-size: 1rem;
@@ -84,7 +84,7 @@
         }
         
         .nav-links a:hover {
-            color: #ffb000;
+            color: #1a1a1a;
         }
         
         .main-content {
@@ -96,7 +96,7 @@
         .page-title {
             font-family: 'JetBrains Mono', monospace;
             font-size: 3rem;
-            color: #fff;
+            color: #1a1a1a;
             margin-bottom: 10px;
             animation: fadeInUp 0.8s ease-out;
             font-weight: 500;
@@ -106,7 +106,7 @@
         .subtitle {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
-            color: #ffb000;
+            color: #666;
             margin-bottom: 15px;
             animation: fadeInUp 0.8s ease-out 0.1s both;
             text-transform: uppercase;
@@ -116,7 +116,7 @@
         .version-toggle {
             display: inline-flex;
             background: transparent;
-            border: 1px solid #333;
+            border: 1px solid #ccc;
             border-radius: 0;
             padding: 0;
             margin-bottom: 40px;
@@ -135,8 +135,8 @@
         }
         
         .version-toggle a.active {
-            background: #ffb000;
-            color: #000;
+            background: #1a1a1a;
+            color: #f5f0e6;
         }
         
         .version-toggle a:not(.active) {
@@ -144,7 +144,7 @@
         }
         
         .version-toggle a:not(.active):hover {
-            color: #ffb000;
+            color: #1a1a1a;
         }
         
         .content-section {
@@ -153,7 +153,7 @@
             padding: 30px 0;
             margin-bottom: 25px;
             animation: fadeInUp 0.8s ease-out 0.2s both;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #ddd;
         }
         
         .content-section:last-of-type {
@@ -163,7 +163,7 @@
         .content-section h2 {
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.1rem;
-            color: #ffb000;
+            color: #1a1a1a;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -175,7 +175,7 @@
         .content-section h3 {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
-            color: #fff;
+            color: #333;
             margin: 25px 0 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -186,44 +186,43 @@
             font-size: 1rem;
             line-height: 1.8;
             margin-bottom: 12px;
-            color: #999;
+            color: #444;
         }
         
         .content-section a {
-            color: #ffb000;
+            color: #1a1a1a;
             text-decoration: none;
-            border-bottom: 1px solid #ffb000;
+            border-bottom: 1px solid #1a1a1a;
             transition: all 0.2s;
         }
         
         .content-section a:hover {
-            background: #ffb000;
-            color: #000;
+            background: #1a1a1a;
+            color: #f5f0e6;
         }
         
         code {
             font-family: 'JetBrains Mono', monospace;
-            background: #111;
+            background: #e8e3d9;
             padding: 2px 6px;
             border-radius: 0;
             font-size: 0.85rem;
-            color: #ffb000;
+            color: #1a1a1a;
         }
         
         pre {
-            background: #0a0a0a;
+            background: #1a1a1a;
             padding: 25px;
             border-radius: 0;
             overflow-x: auto;
             margin: 20px 0;
-            border: 1px solid #ffb000;
-            border-left: 3px solid #ffb000;
+            border: none;
         }
         
         pre code {
             background: none;
             padding: 0;
-            color: #ccc;
+            color: #e0e0e0;
             font-size: 0.8rem;
             line-height: 1.7;
         }
@@ -233,25 +232,25 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1px;
             margin: 20px 0;
-            background: #333;
-            border: 1px solid #333;
+            background: #ccc;
+            border: 1px solid #ccc;
         }
         
         .tech-card {
-            background: #000;
+            background: #f5f0e6;
             padding: 20px;
             border-radius: 0;
             transition: background 0.2s;
         }
         
         .tech-card:hover {
-            background: #0a0a0a;
+            background: #ebe6dc;
         }
         
         .tech-card .label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.65rem;
-            color: #666;
+            color: #888;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 8px;
@@ -260,7 +259,7 @@
         .tech-card .value {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.95rem;
-            color: #fff;
+            color: #1a1a1a;
         }
         
         .feature-list {
@@ -270,12 +269,12 @@
         
         .feature-list li {
             padding: 12px 0;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #ddd;
             font-family: 'Source Sans 3', sans-serif;
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            color: #888;
+            color: #555;
         }
         
         .feature-list li:last-child {
@@ -283,15 +282,15 @@
         }
         
         .feature-list .icon {
-            color: #ffb000;
+            color: #1a1a1a;
             font-size: 1rem;
             flex-shrink: 0;
             font-family: 'JetBrains Mono', monospace;
         }
         
         .prompt-example {
-            background: #0a0a0a;
-            border-left: 3px solid #ffb000;
+            background: #ebe6dc;
+            border-left: 3px solid #1a1a1a;
             padding: 20px 25px;
             margin: 20px 0;
             border-radius: 0;
@@ -300,7 +299,7 @@
         .prompt-example .label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.65rem;
-            color: #ffb000;
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 12px;
@@ -308,14 +307,14 @@
         
         .prompt-example p {
             font-style: italic;
-            color: #777;
+            color: #555;
             margin-bottom: 0;
             font-size: 0.95rem;
         }
         
         .architecture-diagram {
-            background: #0a0a0a;
-            border: 1px solid #222;
+            background: #ebe6dc;
+            border: 1px solid #ccc;
             border-radius: 0;
             padding: 40px;
             margin: 25px 0;
@@ -331,25 +330,25 @@
         }
         
         .architecture-diagram .box {
-            background: #000;
-            border: 1px solid #ffb000;
+            background: #f5f0e6;
+            border: 1px solid #1a1a1a;
             padding: 15px 25px;
             border-radius: 0;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
-            color: #ffb000;
+            color: #1a1a1a;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.2s;
         }
         
         .architecture-diagram .box:hover {
-            background: #ffb000;
-            color: #000;
+            background: #1a1a1a;
+            color: #f5f0e6;
         }
         
         .architecture-diagram .arrow {
-            color: #ffb000;
+            color: #1a1a1a;
             font-size: 1.2rem;
             padding: 0 10px;
         }
@@ -358,22 +357,22 @@
             display: inline-flex;
             align-items: center;
             background: transparent;
-            color: #fff;
+            color: #1a1a1a;
             padding: 12px 20px;
             border-radius: 0;
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
             transition: all 0.2s;
-            border: 1px solid #ffb000;
+            border: 1px solid #1a1a1a;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         .github-link:hover {
-            background: #ffb000;
-            color: #000;
-            border-color: #ffb000;
+            background: #1a1a1a;
+            color: #f5f0e6;
+            border-color: #1a1a1a;
         }
         
         footer {
@@ -381,20 +380,20 @@
             padding: 60px 30px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            color: #444;
+            color: #888;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-top: 1px solid #222;
+            border-top: 1px solid #ddd;
         }
         
         footer a {
-            color: #ffb000;
+            color: #1a1a1a;
             text-decoration: none;
         }
         
         footer a:hover {
-            background: #ffb000;
-            color: #000;
+            background: #1a1a1a;
+            color: #f5f0e6;
         }
         
         @media (max-width: 600px) {
