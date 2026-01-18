@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Lora:wght@400;500&family=Source+Sans+3:wght@300;400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Technical Details | How This Site Was Built | Unique Women's Book Club</title>
+    <meta name="description" content="Technical deep-dive into how the Unique Women's Book Club website was built using Shelley AI coding agent on exe.dev">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            padding: 12px 30px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 1px solid #333;
+        }
+        
+        .site-logo {
+            color: #00d9ff;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .site-logo span {
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00d9ff;
+        }
+        
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 30px 60px;
+        }
+        
+        .page-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: #00d9ff;
+            margin-bottom: 10px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+        
+        .version-toggle {
+            display: inline-flex;
+            background: #252540;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.15s both;
+        }
+        
+        .version-toggle a {
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .version-toggle a.active {
+            background: #00d9ff;
+            color: #1a1a2e;
+        }
+        
+        .version-toggle a:not(.active) {
+            color: #888;
+        }
+        
+        .version-toggle a:not(.active):hover {
+            color: #00d9ff;
+        }
+        
+        .content-section {
+            background: #252540;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            border: 1px solid #333;
+        }
+        
+        .content-section h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            color: #00d9ff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .content-section h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: #ff6b9d;
+            margin: 20px 0 10px;
+        }
+        
+        .content-section p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            color: #ccc;
+        }
+        
+        .content-section a {
+            color: #00d9ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #00d9ff;
+            transition: all 0.3s;
+        }
+        
+        .content-section a:hover {
+            color: #ff6b9d;
+            border-bottom-color: #ff6b9d;
+        }
+        
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #1a1a2e;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #ff6b9d;
+        }
+        
+        pre {
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: #e0e0e0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tech-card {
+            background: #1a1a2e;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .tech-card .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .tech-card .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: #00d9ff;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            font-family: 'Source Sans 3', sans-serif;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list .icon {
+            color: #00d9ff;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .prompt-example {
+            background: #1a1a2e;
+            border-left: 3px solid #ff6b9d;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .prompt-example .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #ff6b9d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .prompt-example p {
+            font-style: italic;
+            color: #aaa;
+            margin-bottom: 0;
+        }
+        
+        .architecture-diagram {
+            background: #1a1a2e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .architecture-diagram .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .architecture-diagram .box {
+            background: #252540;
+            border: 1px solid #00d9ff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #00d9ff;
+        }
+        
+        .architecture-diagram .arrow {
+            color: #888;
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        footer a {
+            color: #00d9ff;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .sticky-nav {
+                padding: 10px 15px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .architecture-diagram .flow {
+                flex-direction: column;
+            }
+            
+            .architecture-diagram .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sticky-nav">
+        <a href="index.html" class="site-logo"><span>&lt;/&gt;</span> uwbc</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#books">Reading List</a>
+            <a href="about-site.html">About Site</a>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <h1 class="page-title">// Technical Deep Dive</h1>
+        <p class="subtitle">For developers who want to understand the implementation details</p>
+        
+        <div class="version-toggle">
+            <a href="about-site.html">Simple Version</a>
+            <a href="about-site-technical.html" class="active">Technical Version</a>
+        </div>
+        
+        <section class="content-section">
+            <h2>📊 Stack Overview</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="label">Frontend</div>
+                    <div class="value">Vanilla HTML/CSS/JS</div>
+                </div>
+                <div class="tech-card">
+                    <div class="label">Frameworks</div>
+                    <div class="value">None</div>
+                </div>
+                <div class="tech-card">
+                    <div class="label">Hosting</div>
+                    <div class="value">GitHub Pages</div>
+                </div>
+                <div class="tech-card">
+                    <div class="label">Build Tools</div>
+                    <div class="value">None required</div>
+                </div>
+                <div class="tech-card">
+                    <div class="label">AI Agent</div>
+                    <div class="value">Shelley on exe.dev</div>
+                </div>
+                <div class="tech-card">
+                    <div class="label">LLM</div>
+                    <div class="value">Claude (Anthropic)</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>🏗️ Architecture</h2>
+            <p>The development workflow used a conversational interface to an AI coding agent running in a cloud VM:</p>
+            
+            <div class="architecture-diagram">
+                <div class="flow">
+                    <div class="box">User (Browser)</div>
+                    <div class="arrow">→</div>
+                    <div class="box">exe.dev VM</div>
+                    <div class="arrow">→</div>
+                    <div class="box">Shelley Agent</div>
+                    <div class="arrow">→</div>
+                    <div class="box">Claude API</div>
+                </div>
+            </div>
+            
+            <h3>exe.dev</h3>
+            <p><a href="https://exe.dev" target="_blank">exe.dev</a> provides persistent Linux VMs with instant HTTPS access. Each VM runs Shelley, a coding agent accessible via web browser on port 9999. The VM has full shell access, can install packages, run servers, and persist data across sessions.</p>
+            
+            <h3>Shelley</h3>
+            <p>Shelley is a coding agent that uses Claude as its LLM backend. It has access to tools including:</p>
+            <ul class="feature-list">
+                <li><span class="icon">$</span> <code>bash</code> - Execute shell commands</li>
+                <li><span class="icon">📝</span> <code>patch</code> - Make precise file edits</li>
+                <li><span class="icon">🌐</span> <code>browser_*</code> - Headless browser for screenshots, navigation, JS evaluation</li>
+                <li><span class="icon">🔍</span> <code>keyword_search</code> - Semantic code search</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>🎨 CSS Techniques Used</h2>
+            
+            <h3>Paper Texture Overlay</h3>
+            <p>The subtle paper texture is achieved with an SVG noise filter applied via CSS:</p>
+            <pre><code>body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.15;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' 
+        xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E
+        %3CfeTurbulence type='fractalNoise' baseFrequency='0.85' 
+        numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E
+        %3Crect width='100%' height='100%' filter='url(%23noise)'/%3E
+        %3C/svg%3E");
+    mix-blend-mode: multiply;
+}</code></pre>
+            
+            <h3>Typography Stack</h3>
+            <ul class="feature-list">
+                <li><span class="icon">✦</span> <code>Caveat</code> - Handwritten display font for headings</li>
+                <li><span class="icon">✦</span> <code>Crimson Text</code> - Elegant serif for body text</li>
+                <li><span class="icon">✦</span> <code>Lora</code> - Secondary serif for subheadings</li>
+                <li><span class="icon">✦</span> <code>Source Sans 3</code> - Clean sans-serif for UI elements</li>
+            </ul>
+            
+            <h3>Other CSS Features</h3>
+            <ul class="feature-list">
+                <li><span class="icon">→</span> CSS Grid and Flexbox for layouts</li>
+                <li><span class="icon">→</span> <code>backdrop-filter: blur()</code> for frosted glass nav</li>
+                <li><span class="icon">→</span> CSS animations with <code>@keyframes</code> for page load effects</li>
+                <li><span class="icon">→</span> CSS variables for consistent theming</li>
+                <li><span class="icon">→</span> Media queries for responsive design</li>
+                <li><span class="icon">→</span> <code>scroll-behavior: smooth</code> for anchor navigation</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>🎯 Frontend Design Skill</h2>
+            <p>The design quality was enhanced using Anthropic's <a href="https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md" target="_blank">frontend-design skill</a>, which provides guidance for creating distinctive, production-grade interfaces.</p>
+            
+            <h3>Key Principles from the Skill</h3>
+            <ul class="feature-list">
+                <li><span class="icon">✦</span> <strong>Bold aesthetic direction</strong> - Commit to a clear visual concept (cozy coffee shop)</li>
+                <li><span class="icon">✦</span> <strong>Distinctive typography</strong> - Avoid generic fonts like Arial/Inter</li>
+                <li><span class="icon">✦</span> <strong>Atmospheric details</strong> - Textures, gradients, subtle animations</li>
+                <li><span class="icon">✦</span> <strong>Cohesive color palette</strong> - Dominant colors with intentional accents</li>
+                <li><span class="icon">✦</span> <strong>Context-appropriate design</strong> - Match the vibe of Aqus Café and a book club</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>💬 Conversational Development</h2>
+            <p>The entire site was built through natural language prompts. Here's the actual development flow:</p>
+            
+            <div class="prompt-example">
+                <div class="label">Initial Prompt</div>
+                <p>"I'd like to make 5 different creative landing page concepts for my mom's book club..."</p>
+            </div>
+            <p>Shelley generated 5 complete HTML files with distinct visual styles. After selecting concept 3 (coffee shop theme), refinement continued:</p>
+            
+            <div class="prompt-example">
+                <div class="label">Adding Hero Image</div>
+                <p>"Can we add a hero background image with a semi-transparent overlay that is the color of the current background on the website?"</p>
+            </div>
+            
+            <div class="prompt-example">
+                <div class="label">Accessibility Fix</div>
+                <p>"It's hard to make out the text 'Petaluma, California' on the background image."</p>
+            </div>
+            
+            <div class="prompt-example">
+                <div class="label">Feature Addition</div>
+                <p>"Can we link to the actual book page on Copperfield's website like copperfieldsbooks.com/book/9781982141875 for Camera Girl?"</p>
+            </div>
+            
+            <p>Each prompt resulted in working code changes, committed to git, with the agent taking screenshots to verify the results.</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>📁 Repository Structure</h2>
+            <pre><code>bookclub/
+├── index.html          # Main landing page (36KB)
+├── about-site.html     # How it was built (simple)
+├── about-site-technical.html  # This page
+├── favicon.svg         # Coffee cup favicon
+├── covers/             # Book cover images
+│   ├── camera-girl.jpg
+│   ├── emma.jpg
+│   ├── unfinished-love-story.jpg
+│   ├── rose-code.jpg
+│   └── offing.jpg
+├── concept[1-5].html   # Original design concepts
+├── CNAME               # Custom domain config
+└── .git/               # Version control</code></pre>
+        </section>
+        
+        <section class="content-section">
+            <h2>🔗 Resources</h2>
+            <ul class="feature-list">
+                <li><span class="icon">→</span> <a href="https://exe.dev" target="_blank">exe.dev</a> - Cloud VMs with AI coding agents</li>
+                <li><span class="icon">→</span> <a href="https://exe.dev/docs/shelley/intro.md" target="_blank">Shelley Documentation</a> - About the coding agent</li>
+                <li><span class="icon">→</span> <a href="https://github.com/anthropics/skills" target="_blank">Anthropic Skills</a> - Reusable AI guidance patterns</li>
+                <li><span class="icon">→</span> <a href="https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md" target="_blank">Frontend Design Skill</a> - The skill used for this site</li>
+                <li><span class="icon">→</span> <a href="https://docs.anthropic.com" target="_blank">Anthropic Docs</a> - Claude API documentation</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p><a href="about-site.html">← Back to Simple Version</a></p>
+        <p style="margin-top: 15px;">Built with Shelley on exe.dev // Hosted on GitHub Pages</p>
+    </footer>
+</body>
+</html>

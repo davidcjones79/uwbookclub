@@ -244,6 +244,38 @@
             font-size: 1.2rem;
         }
         
+        .version-toggle {
+            display: inline-flex;
+            background: white;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(74, 55, 40, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.15s both;
+        }
+        
+        .version-toggle a {
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .version-toggle a.active {
+            background: #722f37;
+            color: white;
+        }
+        
+        .version-toggle a:not(.active) {
+            color: #722f37;
+        }
+        
+        .version-toggle a:not(.active):hover {
+            background: #f5ebe0;
+        }
+        
         footer {
             text-align: center;
             padding: 40px 30px;
@@ -297,6 +329,11 @@
     <main class="main-content">
         <h1 class="page-title">How This Site Was Built</h1>
         <p class="subtitle">A collaboration between humans and an AI coding agent</p>
+        
+        <div class="version-toggle">
+            <a href="about-site.html" class="active">Simple Version</a>
+            <a href="about-site-technical.html">🤓 I'm a computer nerd, show me the technical details!</a>
+        </div>
         
         <section class="content-section">
             <h2><span class="icon">👥</span> The Team</h2>
