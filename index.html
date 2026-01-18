@@ -240,22 +240,6 @@
             position: relative;
         }
         
-        .meeting-info::before {
-            content: '☕';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2.5rem;
-            background: white;
-            color: #6b4423;
-            padding: 5px 15px;
-            border-radius: 50%;
-            border: 2px solid #6b4423;
-            z-index: 5;
-            line-height: 1;
-        }
-        
         .meeting-info h2 {
             font-family: 'Caveat', cursive;
             font-size: 2rem;
@@ -288,6 +272,35 @@
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px dashed rgba(255,255,255,0.4);
+        }
+        
+        .meeting-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .meeting-details {
+            flex: 1;
+        }
+        
+        .meeting-book {
+            text-align: center;
+        }
+        
+        .meeting-book-cover {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .meeting-book-title {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.95;
         }
         
         .books-section {
@@ -772,10 +785,18 @@
         
         <div class="meeting-info-wrapper">
             <div class="meeting-info">
-        <h2>Next Meeting</h2>
-        <p class="next-meeting-date" id="nextMeetingDate"></p>
-        <p class="meeting-time">2:30 PM</p>
-        <p class="location">📍 Aqus Café<br>189 H Street, Petaluma, CA 94952</p>
+                <div class="meeting-content">
+                    <div class="meeting-details">
+                        <h2>Next Meeting</h2>
+                        <p class="next-meeting-date" id="nextMeetingDate"></p>
+                        <p class="meeting-time">2:30 PM</p>
+                        <p class="location">📍 Aqus Café<br>189 H Street, Petaluma, CA 94952</p>
+                    </div>
+                    <div class="meeting-book">
+                        <img src="covers/camera-girl.jpg" alt="Camera Girl cover" class="meeting-book-cover">
+                        <p class="meeting-book-title">Camera Girl</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
