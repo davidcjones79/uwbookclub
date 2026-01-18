@@ -205,6 +205,18 @@
             margin-top: 10px;
         }
         
+        .next-meeting-date {
+            font-family: 'Caveat', cursive;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin: 10px 0 5px;
+        }
+        
+        .meeting-time {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
         .meeting-info p {
             font-size: 1.1rem;
             line-height: 1.8;
@@ -645,9 +657,9 @@
         
         <div class="meeting-info-wrapper">
             <div class="meeting-info">
-        <h2>Join Us Every Month</h2>
-        <p><strong>Third Thursday</strong> of each month<br>
-        <strong>2:30 PM</strong></p>
+        <h2>Next Meeting</h2>
+        <p class="next-meeting-date" id="nextMeetingDate"></p>
+        <p class="meeting-time">2:30 PM</p>
         <p class="location">📍 Aqus Café<br>189 H Street, Petaluma, CA 94952</p>
             </div>
         </div>
@@ -838,6 +850,46 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
+        
+        // Calculate and display next 3rd Thursday
+        function getThirdThursday(year, month) {
+            // Find first day of month
+            const firstDay = new Date(year, month, 1);
+            // Find first Thursday (day 4)
+            let firstThursday = 1 + (4 - firstDay.getDay() + 7) % 7;
+            // Third Thursday is 14 days later
+            return new Date(year, month, firstThursday + 14);
+        }
+        
+        function getNextMeeting() {
+            const now = new Date();
+            let year = now.getFullYear();
+            let month = now.getMonth();
+            
+            // Get this month's 3rd Thursday
+            let nextMeeting = getThirdThursday(year, month);
+            
+            // If it's already passed, get next month's
+            if (now > nextMeeting) {
+                month++;
+                if (month > 11) {
+                    month = 0;
+                    year++;
+                }
+                nextMeeting = getThirdThursday(year, month);
+            }
+            
+            return nextMeeting;
+        }
+        
+        function formatMeetingDate(date) {
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+        
+        // Display the next meeting date
+        const nextMeeting = getNextMeeting();
+        document.getElementById('nextMeetingDate').textContent = formatMeetingDate(nextMeeting);
     </script>
 </body>
 </html>
